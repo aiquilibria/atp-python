@@ -10,7 +10,7 @@ dependencies = [
     "pynacl==1.6.2",
     "python-dotenv==1.2.2",
     "pydantic==2.12.5",
-    "structlog==25.5.0",
+    "structlog==26.1.0",
 ]
 
 [project.optional-dependencies]
