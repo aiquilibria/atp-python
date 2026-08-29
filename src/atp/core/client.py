@@ -863,7 +863,7 @@ class ATPClient:
         Report a trust assessment verdict to the ATP Exchange.
 
         Phase 1: ``challenge()`` calls this automatically for integrity assessments.
-        Quality and compliance assessments can be submitted directly by authorised
+        Quality and compliance assessments can be submitted directly by authorized
         third-party evaluators.
 
         Args:

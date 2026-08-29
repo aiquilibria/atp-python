@@ -256,14 +256,14 @@ class SQLiteProofStore(ProofStore):
         expires_at TEXT NOT NULL        -- ISO-8601 UTC, used for TTL queries
 
     The entire ``StoredProof`` (including nested ``ProofData``, invocation /
-    outcome dicts, and ``Dependency`` lists) serialises round-trip via Pydantic's
+    outcome dicts, and ``Dependency`` lists) serializes round-trip via Pydantic's
     ``model_dump_json()`` / ``model_validate_json()``, so no extra column
     mapping is required.
 
     Concurrency
     -----------
     ``aiosqlite`` runs the connection in a dedicated background thread and
-    serialises all operations through it, so multiple coroutines calling
+    serializes all operations through it, so multiple coroutines calling
     ``save`` / ``get`` concurrently are safe without an extra asyncio lock.
     WAL mode is enabled on first open for better read/write concurrency.
 
@@ -317,11 +317,11 @@ class SQLiteProofStore(ProofStore):
 
     async def _ensure_schema(self) -> None:
         """
-        Create the table and index exactly once, serialised by an asyncio Lock.
+        Create the table and index exactly once, serialized by an asyncio Lock.
 
         Running PRAGMA + CREATE TABLE concurrently from multiple coroutines
         triggers "database is locked" even in WAL mode because all of them try
-        to acquire an exclusive write-lock at the same instant.  Serialising
+        to acquire an exclusive write-lock at the same instant.  Serializing
         through this coroutine means only the first caller does real work; all
         subsequent callers return immediately once _schema_ready is True.
         """

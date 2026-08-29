@@ -342,7 +342,7 @@ class TestATPClientCommit:
             payload = mock_http_client.post.call_args[1]["json"]
             assert payload["system_id"] == "sys"
             assert payload["task_id"] == "task"
-            assert "proof" in payload        # the serialised ProofSketch
+            assert "proof" in payload        # the serialized ProofSketch
             assert "proof_hash" in payload   # the ephemeral proof hash
             assert "atp_metadata" in payload["proof"]
             assert "cryptography" in payload["proof"]
@@ -420,7 +420,7 @@ class TestATPClientClose:
 
 
 class TestATPClientClassification:
-    """Tests for ATP v0.2.0 task classification behaviour in create_commit()."""
+    """Tests for ATP v0.2.0 task classification behavior in create_commit()."""
 
     def _ok_response(self):
         """Minimal 200 commit response."""
@@ -507,7 +507,7 @@ class TestATPClientClassification:
 
     @pytest.mark.asyncio
     async def test_classification_included_in_proof_payload(self, atp_client):
-        """Classification must be serialised into the proof field sent to the Exchange."""
+        """Classification must be serialized into the proof field sent to the Exchange."""
         custom = Capability(
             description="Code review",
             ontology=Ontology(

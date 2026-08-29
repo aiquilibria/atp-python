@@ -33,7 +33,7 @@ def compute_sha256(data: str) -> str:
 
 def compute_data_hash(data: Any) -> str:
     """
-    Compute SHA-256 of arbitrary data using canonical JSON serialisation.
+    Compute SHA-256 of arbitrary data using canonical JSON serialization.
 
     Uses sorted keys and compact separators so that key order never affects
     the resulting hash.
@@ -77,7 +77,7 @@ def hash_with_prefix(data: Any) -> str:
         )
 
     Args:
-        data: String, dict, list, or anything serialisable to canonical JSON.
+        data: String, dict, list, or anything serializable to canonical JSON.
 
     Returns:
         ``"sha256:" + 64-char lowercase hex digest``
@@ -88,7 +88,7 @@ def hash_with_prefix(data: Any) -> str:
 # ---------------------------------------------------------------------------
 # Dependencies hash
 #
-# ATP §5.3 requires canonical JSON serialisation: object keys sorted
+# ATP §5.3 requires canonical JSON serialization: object keys sorted
 # alphabetically at all nesting levels, no insignificant whitespace, UTF-8
 # encoding.  This ensures hash values are byte-for-byte reproducible across
 # all agents and SDK implementations regardless of language or library.
@@ -103,7 +103,7 @@ def _format_datetime_rfc3339nano(dt: datetime) -> str:
     """
     Format a datetime per ATP §5.3 canonical timestamp requirements.
 
-    ATP §5.3 requires timestamps to be serialised as ISO 8601 / RFC 3339 UTC
+    ATP §5.3 requires timestamps to be serialized as ISO 8601 / RFC 3339 UTC
     with:
     - ``Z`` suffix (not ``+00:00``)
     - Fractional seconds with trailing zeros stripped
@@ -111,7 +111,7 @@ def _format_datetime_rfc3339nano(dt: datetime) -> str:
     This function produces up to microsecond precision (6 significant digits
     maximum), which is sufficient for all practical ATP timestamp values.
     """
-    # Normalise to UTC without tzinfo offset so strftime produces bare values
+    # Normalize to UTC without tzinfo offset so strftime produces bare values
     if dt.tzinfo is not None:
         dt = dt.astimezone(UTC).replace(tzinfo=None)
 
@@ -124,7 +124,7 @@ def _format_datetime_rfc3339nano(dt: datetime) -> str:
 
 def _dep_eval_to_canonical(ev: "DependencyEvaluation | dict[str, Any]") -> dict[str, Any]:
     """
-    Serialise a DependencyEvaluation to canonical form per ATP §5.3.
+    Serialize a DependencyEvaluation to canonical form per ATP §5.3.
 
     ``evaluation_policy`` is omitted when empty/None (ATP omitempty rule).
     """
@@ -145,7 +145,7 @@ def _dep_eval_to_canonical(ev: "DependencyEvaluation | dict[str, Any]") -> dict[
 
 def _dep_to_canonical(dep: "Dependency | dict[str, Any]") -> dict[str, Any]:
     """
-    Serialise a Dependency to canonical form per ATP §5.3.
+    Serialize a Dependency to canonical form per ATP §5.3.
 
     ``evaluations`` is omitted when the list is empty (ATP omitempty rule).
     """
