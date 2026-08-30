@@ -5,14 +5,14 @@ Data structures for ATP proofs and commits — ATP v0.2.0.
 """
 
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
 
 
-class CommitStatus(str, Enum):
+class CommitStatus(StrEnum):
     """Commit status values.
 
     All commits are immediately ``CONFIRMED`` via an Ed25519 exchange signature.
@@ -24,7 +24,7 @@ class CommitStatus(str, Enum):
     FAILED = "failed"
 
 
-class ATPTrustLevel(str, Enum):
+class ATPTrustLevel(StrEnum):
     """
     Trust level used in challenge-response verification.
 
@@ -516,7 +516,7 @@ class StoredProof(BaseModel):
 # ---------------------------------------------------------------------------
 
 
-class AssessmentDimension(str, Enum):
+class AssessmentDimension(StrEnum):
     """The three independent trust assessment axes."""
 
     INTEGRITY = "integrity"
@@ -524,21 +524,21 @@ class AssessmentDimension(str, Enum):
     COMPLIANCE = "compliance"
 
 
-class IntegrityAssessment(str, Enum):
+class IntegrityAssessment(StrEnum):
     """Terminal verdicts for the integrity dimension."""
 
     VERIFIED = "verified"
     COMPROMISED = "compromised"
 
 
-class QualityAssessment(str, Enum):
+class QualityAssessment(StrEnum):
     """Terminal verdicts for the quality dimension (third-party evaluators only)."""
 
     PASSED = "passed"
     FAILED = "failed"
 
 
-class ComplianceAssessment(str, Enum):
+class ComplianceAssessment(StrEnum):
     """Terminal verdicts for the compliance dimension (third-party auditors only)."""
 
     COMPLIANT = "compliant"
