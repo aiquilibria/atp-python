@@ -8,18 +8,18 @@ dependencies = [
     "base58==2.1.1",
     "httpx==0.28.1",
     "pynacl==1.6.2",
-    "python-dotenv==1.2.3",
-    "pydantic==2.13.4",
+    "python-dotenv==1.2.4",
+    "pydantic==2.14.2",
     "structlog==26.1.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "ruff==0.16.4",
-    "mypy==2.3.1",
-    "pytest==9.1.1",
+    "ruff==0.17.3",
+    "mypy==2.4.1",
+    "pytest==9.2.0",
     "pytest-cov==7.1.0",
-    "pytest-asyncio==1.4.0",
+    "pytest-asyncio==1.4.1",
 ]
 
 [build-system]
